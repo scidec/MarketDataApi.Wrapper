@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>MarketDataApi.Wrapper</RootNamespace>
+		<Title>MarketDataApi.Wrapper</Title>
+		<PackageIcon>iKP_EZVs_400x400.jpg</PackageIcon>
+		<PackageId>MarketDataApi.Wrapper</PackageId>
+		<Authors>Graham Armstrong</Authors>
+		<VersionPrefix>1.0.0.10</VersionPrefix>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Copyright>Graham Armstrong</Copyright>
+		<PackageProjectUrl>https://docs.marketdata.app/api</PackageProjectUrl>
+		<Description>The Market Data API is designed around REST and supports standard HTTP response codes and methods. All responses are delivered via JSON for programmatic use of the information or via CSV files to load into your preferred spreadsheet application.</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="iKP_EZVs_400x400.jpg">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
