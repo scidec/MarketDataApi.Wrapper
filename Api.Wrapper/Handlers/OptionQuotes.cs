@@ -42,54 +42,54 @@ namespace MarketDataApi.Wrapper.Handlers
                 expiryDate = expiryDate.Value.AddDays(1).AddSeconds(-1); //end of the day
                 daysToExpiry = GetDate.DaysToExpiration(expiryDate);
                 callOrPut = optionSymbol.Substring(underlyingLocation + 6, 1) == "P" ? "put" : "call";
-                strike = Convert.ToDouble(optionSymbol.Substring(underlyingLocation + 8)) / 100;
+                strike = Convert.ToDouble(optionSymbol.Substring(underlyingLocation + 8)) / 1000d;
             }
             #endregion
 
-            urlBuilder_.Replace("{optionSymbol}", Uri.EscapeDataString(ConvertToString(optionSymbol, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{optionSymbol}", Uri.EscapeDataString(base.ConvertToString(optionSymbol, System.Globalization.CultureInfo.InvariantCulture)));
             if (format != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("format") + "=").Append(Uri.EscapeDataString(ConvertToString(format, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("format") + "=").Append(Uri.EscapeDataString(base.ConvertToString(format, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (date != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("date") + "=").Append(Uri.EscapeDataString(date.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("date") + "=").Append(Uri.EscapeDataString(base.ConvertToString(date.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (from != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("from") + "=").Append(Uri.EscapeDataString(from.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("from") + "=").Append(Uri.EscapeDataString(base.ConvertToString(from.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (to != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("to") + "=").Append(Uri.EscapeDataString(to.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("to") + "=").Append(Uri.EscapeDataString(base.ConvertToString(to.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (countback != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("countback") + "=").Append(Uri.EscapeDataString(ConvertToString(countback, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("countback") + "=").Append(Uri.EscapeDataString(base.ConvertToString(countback, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (dateformat != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("dateformat") + "=").Append(Uri.EscapeDataString(ConvertToString(dateformat, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("dateformat") + "=").Append(Uri.EscapeDataString(base.ConvertToString(dateformat, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (limit != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("limit") + "=").Append(Uri.EscapeDataString(ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("limit") + "=").Append(Uri.EscapeDataString(base.ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (offset != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("offset") + "=").Append(Uri.EscapeDataString(ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("offset") + "=").Append(Uri.EscapeDataString(base.ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (headers != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("headers") + "=").Append(Uri.EscapeDataString(ConvertToString(headers, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("headers") + "=").Append(Uri.EscapeDataString(base.ConvertToString(headers, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (columns != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("columns") + "=").Append(Uri.EscapeDataString(ConvertToString(columns, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("columns") + "=").Append(Uri.EscapeDataString(base.ConvertToString(columns, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (human != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("human") + "=").Append(Uri.EscapeDataString(ConvertToString(human, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("human") + "=").Append(Uri.EscapeDataString(base.ConvertToString(human, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
 

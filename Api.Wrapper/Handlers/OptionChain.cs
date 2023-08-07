@@ -23,110 +23,110 @@ namespace MarketDataApi.Wrapper.Handlers
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
 
-            urlBuilder_.Replace("{underlyingSymbol}", Uri.EscapeDataString(ConvertToString(underlying, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{underlyingSymbol}", Uri.EscapeDataString(base.ConvertToString(underlying, System.Globalization.CultureInfo.InvariantCulture)));
             if (format != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("format") + "=").Append(Uri.EscapeDataString(ConvertToString(format, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("format") + "=").Append(Uri.EscapeDataString(base.ConvertToString(format, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (date != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("date") + "=").Append(Uri.EscapeDataString(date.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("date") + "=").Append(Uri.EscapeDataString(base.ConvertToString(date.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (expiration != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("expiration") + "=").Append(Uri.EscapeDataString(expiration.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("expiration") + "=").Append(Uri.EscapeDataString(base.ConvertToString(expiration.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (from != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("from") + "=").Append(Uri.EscapeDataString(from.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("from") + "=").Append(Uri.EscapeDataString(base.ConvertToString(from.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (to != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("to") + "=").Append(Uri.EscapeDataString(to.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("to") + "=").Append(Uri.EscapeDataString(base.ConvertToString(to.Value, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (month != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("month") + "=").Append(Uri.EscapeDataString(ConvertToString(month, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("month") + "=").Append(Uri.EscapeDataString(base.ConvertToString(month, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (year != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("year") + "=").Append(Uri.EscapeDataString(ConvertToString(year, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("year") + "=").Append(Uri.EscapeDataString(base.ConvertToString(year, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (weekly != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("weekly") + "=").Append(Uri.EscapeDataString(ConvertToString(weekly, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("weekly") + "=").Append(Uri.EscapeDataString(base.ConvertToString(weekly, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (monthly != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("monthly") + "=").Append(Uri.EscapeDataString(ConvertToString(monthly, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("monthly") + "=").Append(Uri.EscapeDataString(base.ConvertToString(monthly, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (quarterly != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("quarterly") + "=").Append(Uri.EscapeDataString(ConvertToString(quarterly, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("quarterly") + "=").Append(Uri.EscapeDataString(base.ConvertToString(quarterly, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (dte != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("dte") + "=").Append(Uri.EscapeDataString(ConvertToString(dte, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("dte") + "=").Append(Uri.EscapeDataString(base.ConvertToString(dte, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (side != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("side") + "=").Append(Uri.EscapeDataString(ConvertToString(side, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("side") + "=").Append(Uri.EscapeDataString(base.ConvertToString(side, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (range != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("range") + "=").Append(Uri.EscapeDataString(ConvertToString(range, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("range") + "=").Append(Uri.EscapeDataString(base.ConvertToString(range, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (strike != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("strike") + "=").Append(Uri.EscapeDataString(ConvertToString(strike, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("strike") + "=").Append(Uri.EscapeDataString(base.ConvertToString(strike, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (minOpenInterest != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("minOpenInterest") + "=").Append(Uri.EscapeDataString(ConvertToString(minOpenInterest, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("minOpenInterest") + "=").Append(Uri.EscapeDataString(base.ConvertToString(minOpenInterest, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (minVolume != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("minVolume") + "=").Append(Uri.EscapeDataString(ConvertToString(minVolume, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("minVolume") + "=").Append(Uri.EscapeDataString(base.ConvertToString(minVolume, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (maxBidAskSpread != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("maxBidAskSpread") + "=").Append(Uri.EscapeDataString(ConvertToString(maxBidAskSpread, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("maxBidAskSpread") + "=").Append(Uri.EscapeDataString(base.ConvertToString(maxBidAskSpread, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (maxBidAskSpreadPct != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("maxBidAskSpreadPct") + "=").Append(Uri.EscapeDataString(ConvertToString(maxBidAskSpreadPct, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("maxBidAskSpreadPct") + "=").Append(Uri.EscapeDataString(base.ConvertToString(maxBidAskSpreadPct, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (dateformat != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("dateformat") + "=").Append(Uri.EscapeDataString(ConvertToString(dateformat, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("dateformat") + "=").Append(Uri.EscapeDataString(base.ConvertToString(dateformat, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (limit != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("limit") + "=").Append(Uri.EscapeDataString(ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("limit") + "=").Append(Uri.EscapeDataString(base.ConvertToString(limit, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (offset != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("offset") + "=").Append(Uri.EscapeDataString(ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("offset") + "=").Append(Uri.EscapeDataString(base.ConvertToString(offset, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (headers != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("headers") + "=").Append(Uri.EscapeDataString(ConvertToString(headers, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("headers") + "=").Append(Uri.EscapeDataString(base.ConvertToString(headers, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (columns != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("columns") + "=").Append(Uri.EscapeDataString(ConvertToString(columns, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("columns") + "=").Append(Uri.EscapeDataString(base.ConvertToString(columns, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (symbol_lookup != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("symbol_lookup") + "=").Append(Uri.EscapeDataString(ConvertToString(symbol_lookup, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("symbol_lookup") + "=").Append(Uri.EscapeDataString(base.ConvertToString(symbol_lookup, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (quote != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("quote") + "=").Append(Uri.EscapeDataString(ConvertToString(quote, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("quote") + "=").Append(Uri.EscapeDataString(base.ConvertToString(quote, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (human != null)
             {
-                urlBuilder_.Append(Uri.EscapeDataString("human") + "=").Append(Uri.EscapeDataString(ConvertToString(human, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(Uri.EscapeDataString("human") + "=").Append(Uri.EscapeDataString(base.ConvertToString(human, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
 

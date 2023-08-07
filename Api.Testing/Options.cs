@@ -40,6 +40,15 @@
         }
 
         [TestMethod()]
+        public async Task GetOptionHistoricalQuotes()
+        {
+            var result = await _api.V1OptionQuotesAsync("AAPL250117C00150000", null,
+                new DateTimeOffset(new DateTime(2023, 1, 20)),
+                new DateTimeOffset(new DateTime(2023, 5, 1)));
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod()]
         public async Task GetOptionChains()
         {
             var result = await _api.V1OptionChainAsync("AAPL");
@@ -56,7 +65,7 @@
         [TestMethod()]
         public async Task GetOptionStrikes()
         {
-            var result = await _api.V1OptionStrikesAsync("AAPL"); //, new DateTimeOffset(new DateTime(2023, 5, 1)), new DateTimeOffset(new DateTime(2023, 1, 20)));
+            var result = await _api.V1OptionStrikesAsync("AAPL");
             Assert.IsNotNull(result);
         }
     }

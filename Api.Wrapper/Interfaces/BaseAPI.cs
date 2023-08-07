@@ -108,13 +108,23 @@ namespace MarketDataApi.Wrapper.Interfaces
             {
                 return Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
+            else if (value is DateTime)
+            {
+                //ISO 8601
+                return ((DateTime)value).ToString("yyyy-MM-dd", cultureInfo);
+            }
+            else if (value is DateTimeOffset)
+            {
+                //ISO 8601
+                return ((DateTimeOffset)value).ToString("yyyy-MM-dd", cultureInfo);
+            }
             else if (value is byte[])
             {
                 return Convert.ToBase64String((byte[])value);
             }
             else if (value.GetType().IsArray)
             {
-                var array = Enumerable.OfType<object>((System.Array)value);
+                var array = Enumerable.OfType<object>((Array)value);
                 return string.Join(",", Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
 

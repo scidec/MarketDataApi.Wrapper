@@ -12,7 +12,7 @@
             }
             else
             {
-                return null;
+                return GetValue.nullDate;
             }
         }
 
@@ -27,13 +27,13 @@
                 }
             }
 
-            result = null;
+            result = GetValue.nullDate;
             return 0;
         }
 
         internal static int? DaysToExpiration(DateTime? date)
         {
-            if (date == null) return null;
+            if (date == null) return GetValue.nullInt;
             DateTime now = DateTime.Now;
             TimeSpan ts = date.Value - now;
             return Fix(ts.TotalDays);
