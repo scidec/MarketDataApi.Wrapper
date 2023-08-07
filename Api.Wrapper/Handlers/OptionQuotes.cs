@@ -12,8 +12,8 @@ namespace MarketDataApi.Wrapper.Handlers
         {
         }
 
-        public async Task<List<Quote>> V1OptionQuotesAsync(Format? format, string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null, 
-            DateTimeOffset? to = null, int? countback = null, Dateformat? dateformat = null, int? limit = null, int? offset = null, bool? headers = null, 
+        public async Task<List<Quote>> V1OptionQuotesAsync(Format? format, string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null,
+            DateTimeOffset? to = null, int? countback = null, Dateformat? dateformat = null, int? limit = null, int? offset = null, bool? headers = null,
             string columns = null, bool? human = null)
         {
             if (optionSymbol == null)
@@ -21,7 +21,30 @@ namespace MarketDataApi.Wrapper.Handlers
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
 
-            string underlying = optionSymbol.Substring(0, 4);
+            //TODO: need to populate these from the response instead
+            #region Remove
+            //"expiration": null,
+            //"side": null,
+            //"strike": null,
+            //"firstTraded": null,
+            //"dte": null,
+
+            //get parameters from option symbol, but should be in the reponse
+            string underlying = null;
+            int? daysToExpiry = null;
+            string callOrPut = null;
+            double? strike = null;
+
+            int underlyingLocation = GetDate.LengthOfSymbol(optionSymbol, out DateTime? expiryDate);
+            if (underlyingLocation > 0)
+            {
+                underlying = optionSymbol.Substring(0, underlyingLocation);
+                expiryDate = expiryDate.Value.AddDays(1).AddSeconds(-1); //end of the day
+                daysToExpiry = GetDate.DaysToExpiration(expiryDate);
+                callOrPut = optionSymbol.Substring(underlyingLocation + 6, 1) == "P" ? "put" : "call";
+                strike = Convert.ToDouble(optionSymbol.Substring(underlyingLocation + 8)) / 100;
+            }
+            #endregion
 
             urlBuilder_.Replace("{optionSymbol}", Uri.EscapeDataString(ConvertToString(optionSymbol, System.Globalization.CultureInfo.InvariantCulture)));
             if (format != null)
@@ -84,8 +107,8 @@ namespace MarketDataApi.Wrapper.Handlers
                     Bid = GetValue.Safe(result.Bid, i),
                     BidSize = GetValue.Safe(result.BidSize, i),
                     Delta = GetValue.Safe(result.Delta, i),
-                    DTE = GetValue.Safe(result.DTE, i),
-                    Expiration = GetValue.Safe(result.Expiration, i),
+                    DTE = daysToExpiry, //GetValue.Safe(result.DTE, i),
+                    Expiration = expiryDate, //GetValue.Safe(result.Expiration, i),
                     ExtrinsicValue = GetValue.Safe(result.ExtrinsicValue, i),
                     FirstTraded = GetValue.Safe(result.FirstTraded, i),
                     Gamma = GetValue.Safe(result.Gamma, i),
@@ -97,11 +120,10 @@ namespace MarketDataApi.Wrapper.Handlers
                     OpenInterest = GetValue.Safe(result.OpenInterest, i),
                     OptionSymbol = optionSymbol,
                     Rho = GetValue.Safe(result.Rho, i),
-                    Side = GetValue.Safe(result.Side, i),
-                    Strike = GetValue.Safe(result.Strike, i),
+                    Side = callOrPut, //GetValue.Safe(result.Side, i),
+                    Strike = strike, //GetValue.Safe(result.Strike, i),
                     Theta = GetValue.Safe(result.Theta, i),
-                    //need to get from the request
-                    Underlying = underlying,
+                    Underlying = underlying, //GetValue.Safe(result.Underlying, i),
                     UnderlyingPrice = GetValue.Safe(result.UnderlyingPrice, i),
                     Updated = GetValue.Safe(result.Updated, i),
                     Vega = GetValue.Safe(result.Vega, i),

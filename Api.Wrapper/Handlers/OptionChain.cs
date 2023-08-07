@@ -136,17 +136,10 @@ namespace MarketDataApi.Wrapper.Handlers
 
             var total = result.Ask.Length;
 
-            //need to populate these
-            //"expiration": null,
-            //"side": null,
-            //"strike": null,
-            //"firstTraded": null,
-            //"dte": null,
-
             for (int i = 0; i < total; i++)
             {
                 items.Add(new Chain
-                {
+                { 
                     Ask = GetValue.Safe(result.Ask, i),
                     AskSize = GetValue.Safe(result.AskSize, i),
                     Bid = GetValue.Safe(result.Bid, i),
