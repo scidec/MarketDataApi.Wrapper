@@ -6,5 +6,10 @@
         /// Status
         /// </summary>
         public string S { get; set; }
+
+        /// <summary>
+        /// Error Message
+        /// </summary>
+        public string ErrMsg { get; set; }
     }
 }

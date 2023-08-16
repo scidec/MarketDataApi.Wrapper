@@ -68,5 +68,12 @@
             var result = await _api.V1OptionStrikesAsync("AAPL");
             Assert.IsNotNull(result);
         }
+
+        [TestMethod()]
+        public async Task DoOptionSymbolLookup()
+        {
+            var result = await _api.V1OptionLookupAsync("AAPL250117C00150000");
+            Assert.IsNotNull(result);
+        }
     }
 }

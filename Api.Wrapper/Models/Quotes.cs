@@ -33,7 +33,7 @@
     internal class QuotesResponse : BaseResponse
     {
         public string[] OptionSymbol { get; set; }
-        public double?[] Underlying { get; set; }
+        public string?[] Underlying { get; set; }
         public DateTime?[] Expiration { get; set; }
         public string[] Side { get; set; }
         public double?[] Strike { get; set; }
