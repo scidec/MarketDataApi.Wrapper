@@ -11,5 +11,15 @@
         /// Error Message
         /// </summary>
         public string ErrMsg { get; set; }
+
+        /// <summary>
+        /// Next Time
+        /// </summary>
+        public DateTime? NextTime { get; set; }
+
+        /// <summary>
+        /// Previous Time
+        /// </summary>
+        public DateTime? PrevTime { get; set; }
     }
 }

@@ -58,7 +58,20 @@ namespace MarketDataApi.Wrapper.Interfaces
                 var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new HttpRequestExceptionExtended($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}", response.StatusCode);
+                    string rayId = "Not available";
+                    if (response.Headers.TryGetValues("Xcf-ray", out IEnumerable<string> values))
+                    {
+                        rayId = values.First();
+                    }
+
+                    var logData = new LogInformation
+                    {
+                        Request = request.Method.ToString().ToUpper() + " " + request.RequestUri.ToString(),
+                        Response = await response.Content.ReadAsStringAsync(),
+                        CfRayHeader = rayId,
+                    };
+
+                    throw new HttpRequestExceptionExtended($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}", response.StatusCode, logData);
                 }
 
                 string content = await response.Content.ReadAsStringAsync();
@@ -84,7 +97,20 @@ namespace MarketDataApi.Wrapper.Interfaces
                 var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new HttpRequestExceptionExtended($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}", response.StatusCode);
+                    string rayId = "Not available";
+                    if (response.Headers.TryGetValues("Xcf-ray", out IEnumerable<string> values))
+                    {
+                        rayId = values.First();
+                    }
+
+                    var logData = new LogInformation
+                    {
+                        Request = request.Method.ToString().ToUpper() + " " + request.RequestUri.ToString(),
+                        Response = await response.Content.ReadAsStringAsync(),
+                        CfRayHeader = rayId,
+                    };
+
+                    throw new HttpRequestExceptionExtended($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}", response.StatusCode, logData);
                 }
 
                 string content = await response.Content.ReadAsStringAsync();
