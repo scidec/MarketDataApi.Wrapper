@@ -4,12 +4,13 @@ namespace MarketDataApi.Wrapper.Utils
 {
     public class HttpRequestExceptionExtended : HttpRequestException
     {
-        public HttpRequestExceptionExtended(string message, HttpStatusCode? statusCode, LogInformation log) : base(message)
+        public HttpRequestExceptionExtended(string message, HttpStatusCode? statusCode, LogInformation? log) : base(message)
         {
-            StatusCode = statusCode;
+            this.StatusCode = statusCode;
+            this.Log = log;
         }
 
-        public HttpStatusCode? StatusCode
+        public new HttpStatusCode? StatusCode
         {
             get => _statusCode;
             set
@@ -18,7 +19,7 @@ namespace MarketDataApi.Wrapper.Utils
             }
         }
 
-        public LogInformation Log { get; set; }
+        public LogInformation? Log { get; set; }
 
         private HttpStatusCode? _statusCode;
     }

@@ -42,6 +42,10 @@ namespace MarketDataApi.Wrapper.Interfaces
             }
         }
 
+        private const string RayIdHeaderName = "CF-RAY";
+
+
+
         public async Task<T> ExecuteQueryAsync<T>(string uri)
         {
             using (var request = new HttpRequestMessage())
@@ -59,7 +63,7 @@ namespace MarketDataApi.Wrapper.Interfaces
                 if (!response.IsSuccessStatusCode)
                 {
                     string rayId = "Not available";
-                    if (response.Headers.TryGetValues("Xcf-ray", out IEnumerable<string> values))
+                    if (response.Headers.TryGetValues(RayIdHeaderName, out IEnumerable<string> values))
                     {
                         rayId = values.First();
                     }
@@ -98,7 +102,7 @@ namespace MarketDataApi.Wrapper.Interfaces
                 if (!response.IsSuccessStatusCode)
                 {
                     string rayId = "Not available";
-                    if (response.Headers.TryGetValues("Xcf-ray", out IEnumerable<string> values))
+                    if (response.Headers.TryGetValues(RayIdHeaderName, out IEnumerable<string> values))
                     {
                         rayId = values.First();
                     }
