@@ -12,7 +12,7 @@ namespace MarketDataApi.Wrapper.Handlers
         {
         }
 
-        public async Task<List<Quote>> V1OptionQuotesAsync(Format? format, string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null,
+        public async Task<List<OptionQuote>> V1OptionQuotesAsync(Format? format, string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null,
             DateTimeOffset? to = null, int? countback = null, Dateformat? dateformat = null, int? limit = null, int? offset = null, bool? headers = null,
             string columns = null, bool? human = null)
         {
@@ -93,14 +93,14 @@ namespace MarketDataApi.Wrapper.Handlers
             }
             urlBuilder_.Length--;
 
-            var result = await ExecuteQueryAsync<QuotesResponse>(urlBuilder_.ToString());
+            var result = await ExecuteQueryAsync<OptionQuotesResponse>(urlBuilder_.ToString());
 
             var total = result.Ask.Length;
-            var items = new List<Quote>();
+            var items = new List<OptionQuote>();
 
             for (int i = 0; i < total; i++)
             {
-                items.Add(new Quote
+                items.Add(new OptionQuote
                 {
                     Ask = GetValue.Safe(result.Ask, i),
                     AskSize = GetValue.Safe(result.AskSize, i),

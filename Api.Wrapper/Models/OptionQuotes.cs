@@ -1,6 +1,6 @@
 ﻿namespace MarketDataApi.Wrapper.Models
 {
-    public class Chain
+    public class OptionQuote
     {
         public string OptionSymbol { get; set; }
         public string Underlying { get; set; }
@@ -30,10 +30,10 @@
         public double? Rho { get; set; }
     }
 
-    internal class ChainsResponse : BaseResponse
+    internal class OptionQuotesResponse : BaseResponse
     {
         public string[] OptionSymbol { get; set; }
-        public string[] Underlying { get; set; }
+        public string?[] Underlying { get; set; }
         public DateTime?[] Expiration { get; set; }
         public string[] Side { get; set; }
         public double?[] Strike { get; set; }

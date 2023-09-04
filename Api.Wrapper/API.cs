@@ -10,6 +10,7 @@ namespace MarketDataApi
         private readonly Wrapper.Interfaces.IOptionQuotes _optionQuotes;
         private readonly Wrapper.Interfaces.IOptionStrikes _optionStrikes;
         private readonly Wrapper.Interfaces.IOptionLookup _optionLookups;
+        private readonly Wrapper.Interfaces.IStockQuotes _stockQuotes;
 
         public API(string apiKey, IWebProxy proxy = null, string source = null)
         {
@@ -18,9 +19,10 @@ namespace MarketDataApi
             _optionQuotes = new Wrapper.Handlers.OptionQuotes(apiKey, proxy, source);
             _optionStrikes = new Wrapper.Handlers.OptionsStrikes(apiKey, proxy, source);
             _optionLookups = new Wrapper.Handlers.OptionLookup(apiKey, proxy, source);
+            _stockQuotes = new Wrapper.Handlers.StockQuotes(apiKey, proxy, source);
         }
 
-        public async Task<List<Quote>> V1OptionQuotesAsync(string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countback = null, int? limit = null, int? offset = null, bool? headers = null, string columns = null, bool? human = null)
+        public async Task<List<OptionQuote>> V1OptionQuotesAsync(string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countback = null, int? limit = null, int? offset = null, bool? headers = null, string columns = null, bool? human = null)
         {
             //force json and timestamp since we are in .net and the web
             return await _optionQuotes.V1OptionQuotesAsync(Format.Json, optionSymbol, date, from, to, countback, Dateformat.Timestamp, limit, offset, headers, columns, human);
@@ -52,6 +54,11 @@ namespace MarketDataApi
         {
             //force json since we are in .net and the web
             return await _optionLookups.V1OptionSymbolLookupAsync(Format.Json, userInput);
+        }
+
+        public async Task<StockQuote> V1StockQuotesAsync(string symbol, int? limit = null, int? offset = null, bool? headers = null, string columns = null, bool? symbol_lookup = null, bool? human = null)
+        {
+            return await _stockQuotes.V1StocksQuotesAsync(Format.Json, symbol, Dateformat.Timestamp);
         }
     }
 }

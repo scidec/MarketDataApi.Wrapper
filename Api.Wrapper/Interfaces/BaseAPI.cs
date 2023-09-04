@@ -44,8 +44,6 @@ namespace MarketDataApi.Wrapper.Interfaces
 
         private const string RayIdHeaderName = "CF-RAY";
 
-
-
         public async Task<T> ExecuteQueryAsync<T>(string uri)
         {
             using (var request = new HttpRequestMessage())
