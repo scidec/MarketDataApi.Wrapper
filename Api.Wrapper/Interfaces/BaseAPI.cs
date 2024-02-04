@@ -9,7 +9,7 @@ namespace MarketDataApi.Wrapper.Interfaces
         private readonly string _apiToken;
         private readonly HttpClient _httpClient;
 
-        public BaseAPI(string apiToken, IWebProxy proxy = null, string source = null)
+        public BaseAPI(string apiToken, IWebProxy? proxy = null, string? source = null)
         {
             _apiToken = apiToken;
 
@@ -61,7 +61,7 @@ namespace MarketDataApi.Wrapper.Interfaces
                 if (!response.IsSuccessStatusCode)
                 {
                     string rayId = "Not available";
-                    if (response.Headers.TryGetValues(RayIdHeaderName, out IEnumerable<string> values))
+                    if (response.Headers.TryGetValues(RayIdHeaderName, out var values))
                     {
                         rayId = values.First();
                     }
@@ -100,7 +100,7 @@ namespace MarketDataApi.Wrapper.Interfaces
                 if (!response.IsSuccessStatusCode)
                 {
                     string rayId = "Not available";
-                    if (response.Headers.TryGetValues(RayIdHeaderName, out IEnumerable<string> values))
+                    if (response.Headers.TryGetValues(RayIdHeaderName, out var values))
                     {
                         rayId = values.First();
                     }

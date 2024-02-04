@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<RootNamespace>MarketDataApi.Wrapper</RootNamespace>
@@ -9,7 +9,7 @@
 		<PackageIcon>iKP_EZVs_400x400.jpg</PackageIcon>
 		<PackageId>MarketDataApi.Wrapper</PackageId>
 		<Authors>Graham Armstrong</Authors>
-		<VersionPrefix>1.0.0.19</VersionPrefix>
+		<VersionPrefix>1.0.0.20</VersionPrefix>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Copyright>Graham Armstrong</Copyright>
 		<PackageProjectUrl>https://docs.marketdata.app/api</PackageProjectUrl>

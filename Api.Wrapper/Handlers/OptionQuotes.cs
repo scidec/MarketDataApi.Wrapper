@@ -8,16 +8,16 @@ namespace MarketDataApi.Wrapper.Handlers
     {
         private const string BaseUrl = @"https://api.marketdata.app/v1/options/quotes/{optionSymbol}/?";
 
-        public OptionQuotes(string apiToken, IWebProxy proxy = null, string source = null) : base(apiToken, proxy, source)
+        public OptionQuotes(string apiToken, IWebProxy? proxy = null, string? source = null) : base(apiToken, proxy, source)
         {
         }
 
-        public async Task<List<OptionQuote>> V1OptionQuotesAsync(Format? format, string optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null,
+        public async Task<List<OptionQuote>> V1OptionQuotesAsync(Format? format, string? optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null,
             DateTimeOffset? to = null, int? countback = null, Dateformat? dateformat = null, int? limit = null, int? offset = null, bool? headers = null,
-            string columns = null, bool? human = null)
+            string? columns = null, bool? human = null)
         {
             if (optionSymbol == null)
-                throw new ArgumentNullException("optionSymbol");
+                throw new ArgumentNullException(nameof(optionSymbol));
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
 
@@ -35,7 +35,7 @@ namespace MarketDataApi.Wrapper.Handlers
             string callOrPut = null;
             double? strike = null;
 
-            int underlyingLocation = GetDate.LengthOfSymbol(optionSymbol, out DateTime? expiryDate);
+            int underlyingLocation = GetDate.LengthOfSymbol(optionSymbol, out DateTimeOffset? expiryDate);
             if (underlyingLocation > 0)
             {
                 underlying = optionSymbol.Substring(0, underlyingLocation);

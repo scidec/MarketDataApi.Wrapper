@@ -38,5 +38,12 @@
             var result = await _api.V1StockQuotesAsync("AAPL");
             Assert.IsNotNull(result);
         }
+
+        [TestMethod()]
+        public async Task GetStockEarnings()
+        {
+            var result = await _api.V1StocksEarningsAsync("AAPL");
+            Assert.IsNotNull(result);
+        }
     }
 }

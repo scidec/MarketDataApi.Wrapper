@@ -7,14 +7,14 @@ namespace MarketDataApi.Wrapper.Handlers
     {
         private const string BaseUrl = @"https://api.marketdata.app/v1/options/lookup/{userInput}/?";
 
-        public OptionLookup(string apiToken, IWebProxy proxy = null, string source = null) : base(apiToken, proxy, source)
+        public OptionLookup(string apiToken, IWebProxy? proxy = null, string? source = null) : base(apiToken, proxy, source)
         {
         }
 
-        public async Task<Lookup> V1OptionSymbolLookupAsync(Format? format, string userInput)
+        public async Task<Lookup> V1OptionSymbolLookupAsync(Format? format, string? userInput)
         {
             if (userInput == null)
-                throw new ArgumentNullException("userInput");
+                throw new ArgumentNullException(nameof(userInput));
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
 

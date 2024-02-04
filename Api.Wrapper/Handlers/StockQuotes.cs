@@ -8,15 +8,15 @@ namespace MarketDataApi.Wrapper.Handlers
     {
         private const string BaseUrl = @"https://api.marketdata.app/v1/stocks/quotes/{stockSymbol}/?";
 
-        public StockQuotes(string apiToken, IWebProxy proxy = null, string source = null) : base(apiToken, proxy, source)
+        public StockQuotes(string apiToken, IWebProxy? proxy = null, string? source = null) : base(apiToken, proxy, source)
         {
         }
 
-        public async Task<StockQuote> V1StocksQuotesAsync(Format? format, string stockSymbol, Dateformat? dateformat = null,
-            int? limit = null, int? offset = null, bool? headers = null, string columns = null, bool? symbol_lookup = null, bool? human = null)
+        public async Task<StockQuote> V1StocksQuotesAsync(Format? format, string? stockSymbol, Dateformat? dateformat = null,
+            int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? human = null)
         {
             if (stockSymbol == null)
-                throw new ArgumentNullException("stockSymbol");
+                throw new ArgumentNullException(nameof(stockSymbol));
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
             urlBuilder_.Replace("{stockSymbol}", Uri.EscapeDataString(base.ConvertToString(stockSymbol, System.Globalization.CultureInfo.InvariantCulture)));

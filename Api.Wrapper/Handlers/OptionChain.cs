@@ -8,18 +8,18 @@ namespace MarketDataApi.Wrapper.Handlers
     {
         private const string BaseUrl = @"https://api.marketdata.app/v1/options/chain/{underlyingSymbol}/?";
 
-        public OptionChain(string apiToken, IWebProxy proxy = null, string source = null) : base(apiToken, proxy, source)
+        public OptionChain(string apiToken, IWebProxy? proxy = null, string? source = null) : base(apiToken, proxy, source)
         {
         }
 
-        public async Task<List<Chain>> V1OptionChainAsync(Format? format, string underlying, DateTimeOffset? date = null, DateTimeOffset? expiration = null, 
+        public async Task<List<Chain>> V1OptionChainAsync(Format? format, string? underlying, DateTimeOffset? date = null, DateTimeOffset? expiration = null, 
             DateTimeOffset? from = null, DateTimeOffset? to = null, int? month = null, int? year = null, bool? weekly = null, bool? monthly = null, bool? quarterly = null,
             int? dte = null, Side? side = null, Models.Range? range = null, float? strike = null, float? minOpenInterest = null, int? minVolume = null, 
             float? maxBidAskSpread = null, float? maxBidAskSpreadPct = null, Dateformat? dateformat = null, int? limit = null, int? offset = null, 
-            bool? headers = null, string columns = null, bool? symbol_lookup = null, bool? quote = null, bool? human = null)
+            bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? quote = null, bool? human = null)
         {
             if (underlying == null)
-                throw new ArgumentNullException("underlying");
+                throw new ArgumentNullException(nameof(underlying));
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
 

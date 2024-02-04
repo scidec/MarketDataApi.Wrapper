@@ -4,9 +4,9 @@
     {
         internal static System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
 
-        internal static DateTime? ParseDate(string dateStr)
+        internal static DateTimeOffset? ParseDate(string dateStr)
         {
-            if (DateTime.TryParse(dateStr, out var date))
+            if (DateTimeOffset.TryParse(dateStr, out var date))
             {
                 return date;
             }
@@ -16,11 +16,11 @@
             }
         }
 
-        internal static int LengthOfSymbol(string contractSymbol, out DateTime? result)
+        internal static int LengthOfSymbol(string contractSymbol, out DateTimeOffset? result)
         {
             for (int i = 1; i < contractSymbol.Length - 1; i++)
             {
-                if (DateTime.TryParseExact(contractSymbol.Substring(i, 6), "yyMMdd", provider, System.Globalization.DateTimeStyles.None, out DateTime dt))
+                if (DateTimeOffset.TryParseExact(contractSymbol.Substring(i, 6), "yyMMdd", provider, System.Globalization.DateTimeStyles.None, out DateTimeOffset dt))
                 {
                     result = dt;
                     return i;
@@ -31,10 +31,10 @@
             return 0;
         }
 
-        internal static int? DaysToExpiration(DateTime? date)
+        internal static int? DaysToExpiration(DateTimeOffset? date)
         {
             if (date == null) return GetValue.nullInt;
-            DateTime now = DateTime.Now;
+            DateTimeOffset now = DateTimeOffset.Now;
             TimeSpan ts = date.Value - now;
             return Fix(ts.TotalDays);
         }

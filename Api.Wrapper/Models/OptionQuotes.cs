@@ -4,12 +4,12 @@
     {
         public string OptionSymbol { get; set; }
         public string Underlying { get; set; }
-        public DateTime? Expiration { get; set; }
+        public DateTimeOffset? Expiration { get; set; }
         public string Side { get; set; }
         public double? Strike { get; set; }
-        public DateTime? FirstTraded { get; set; }
+        public DateTimeOffset? FirstTraded { get; set; }
         public int? DTE { get; set; }
-        public DateTime? Updated { get; set; }
+        public DateTimeOffset? Updated { get; set; }
         public double? Bid { get; set; }
         public double? BidSize { get; set; }
         public double? Mid { get; set; }
@@ -34,12 +34,12 @@
     {
         public string[] OptionSymbol { get; set; }
         public string?[] Underlying { get; set; }
-        public DateTime?[] Expiration { get; set; }
+        public DateTimeOffset?[] Expiration { get; set; }
         public string[] Side { get; set; }
         public double?[] Strike { get; set; }
-        public DateTime?[] FirstTraded { get; set; }
+        public DateTimeOffset?[] FirstTraded { get; set; }
         public int?[] DTE { get; set; }
-        public DateTime?[] Updated { get; set; }
+        public DateTimeOffset?[] Updated { get; set; }
         public double?[] Bid { get; set; }
         public double?[] BidSize { get; set; }
         public double?[] Mid { get; set; }

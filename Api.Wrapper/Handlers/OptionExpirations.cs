@@ -8,15 +8,15 @@ namespace MarketDataApi.Wrapper.Handlers
     {
         private const string BaseUrl = @"https://api.marketdata.app/v1/options/expirations/{underlyingSymbol}/?";
 
-        public OptionExpirations(string apiToken, IWebProxy proxy = null, string source = null) : base(apiToken, proxy, source)
+        public OptionExpirations(string apiToken, IWebProxy? proxy = null, string? source = null) : base(apiToken, proxy, source)
         {
         }
 
-        public async Task<List<Expire>> V1OptionExpirationsAsync(Format? format, string underlying, float? strike = null, DateTimeOffset? date = null,
-            Dateformat? dateformat = null, int? limit = null, int? offset = null, bool? headers = null, string columns = null, bool? symbol_lookup = null, bool? human = null)
+        public async Task<List<Expire>> V1OptionExpirationsAsync(Format? format, string? underlying, float? strike = null, DateTimeOffset? date = null,
+            Dateformat? dateformat = null, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? human = null)
         {
             if (underlying == null)
-                throw new ArgumentNullException("underlying");
+                throw new ArgumentNullException(nameof(underlying));
 
             var urlBuilder_ = new System.Text.StringBuilder(BaseUrl);
 

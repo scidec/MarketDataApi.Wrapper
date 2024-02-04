@@ -12,7 +12,7 @@
         public double? Change { get; set; }
         public double? ChangePct { get; set; }
         public long? Volume { get; set; }
-        public DateTime? Updated { get; set; }
+        public DateTimeOffset? Updated { get; set; }
     }
 
     internal class StockQuotesResponse : BaseResponse
@@ -27,6 +27,6 @@
         public double?[] Change { get; set; }
         public double?[] ChangePct { get; set; }
         public long?[] Volume { get; set; }
-        public DateTime?[] Updated { get; set; }
+        public DateTimeOffset?[] Updated { get; set; }
     }
 }

@@ -15,7 +15,7 @@
             return default;
         }
 
-        internal static DateTime? Safe(DateTime[] values, int index)
+        internal static DateTimeOffset? Safe(DateTimeOffset[] values, int index)
         {
             if (values != null)
             {
@@ -28,7 +28,7 @@
             return nullDate;
         }
 
-        public static readonly DateTime? nullDate = null;
+        public static readonly DateTimeOffset? nullDate = null;
         public static readonly TimeSpan? nullTimeSpan = null;
 
         public static readonly byte? nullByte = null;
