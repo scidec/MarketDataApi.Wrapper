@@ -1,1 +1,5 @@
 /.vs/*
+/Api.Testing/bin/*
+/Api.Testing/obj/*
+/Api.Wrapper/bin/*
+/Api.Wrapper/obj/*
