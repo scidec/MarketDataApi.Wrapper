@@ -12,8 +12,9 @@ namespace MarketDataApi
         private readonly Wrapper.Interfaces.IOptionLookup _optionLookups;
         private readonly Wrapper.Interfaces.IStockQuotes _stockQuotes;
         private readonly Wrapper.Interfaces.IStockEarnings _stockEarnings;
+		private readonly Wrapper.Interfaces.IIndexQuotes _indexQuotes;
 
-        public API(string apiKey, IWebProxy? proxy = null, string? source = null)
+		public API(string apiKey, IWebProxy? proxy = null, string? source = null)
         {
             _optionChain = new Wrapper.Handlers.OptionChain(apiKey, proxy, source);
             _optionExpirations = new Wrapper.Handlers.OptionExpirations(apiKey, proxy, source);
@@ -22,7 +23,8 @@ namespace MarketDataApi
             _optionLookups = new Wrapper.Handlers.OptionLookup(apiKey, proxy, source);
             _stockQuotes = new Wrapper.Handlers.StockQuotes(apiKey, proxy, source);
             _stockEarnings = new Wrapper.Handlers.StockEarnings(apiKey, proxy, source);
-        }
+			_indexQuotes = new Wrapper.Handlers.IndexQuotes(apiKey, proxy, source);
+		}
 
         public async Task<List<OptionQuote>> V1OptionQuotesAsync(string? optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countback = null, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? human = null)
         {
@@ -63,9 +65,14 @@ namespace MarketDataApi
             return await _stockQuotes.V1StocksQuotesAsync(Format.Json, stockSymbol, Dateformat.Timestamp, limit, offset, headers, columns, symbol_lookup, human);
         }
 
-        public async Task<List<StockEarning>> V1StocksEarningsAsync(string? stockSymbol, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countBack = null, DateTimeOffset? date = null, string? dateKey = null)
+        public async Task<List<StockEarning>> V1StockEarningsAsync(string? stockSymbol, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countBack = null, DateTimeOffset? date = null, string? dateKey = null)
         {
-            return await _stockEarnings.V1StocksEarningsAsync(Format.Json, stockSymbol, Dateformat.Timestamp, from, to, countBack, date, dateKey);
+            return await _stockEarnings.V1StockEarningsAsync(Format.Json, stockSymbol, Dateformat.Timestamp, from, to, countBack, date, dateKey);
         }
-    }
+		
+        public async Task<IndexQuote> V1IndexQuotesAsync(string? stockSymbol, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? human = null)
+		{
+			return await _indexQuotes.V1IndexQuotesAsync(Format.Json, stockSymbol, Dateformat.Timestamp, limit, offset, headers, columns, symbol_lookup, human);
+		}
+	}
 }

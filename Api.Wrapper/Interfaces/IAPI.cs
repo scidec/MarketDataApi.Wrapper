@@ -9,6 +9,7 @@ namespace MarketDataApi.Wrapper.Interfaces
         Task<List<OptionQuote>> V1OptionQuotesAsync(string? optionSymbol, DateTimeOffset? date = null, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countback = null, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? human = null);
         Task<List<Strike>> V1OptionStrikesAsync(string? underlying, DateTimeOffset? date = null, DateTimeOffset? expiration = null, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? human = null);
         Task<StockQuote> V1StockQuotesAsync(string? stockSymbol, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? human = null);
-        Task<List<StockEarning>> V1StocksEarningsAsync(string? stockSymbol, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countBack = null, DateTimeOffset? date = null, string? dateKey = null);
+        Task<List<StockEarning>> V1StockEarningsAsync(string? stockSymbol, DateTimeOffset? from = null, DateTimeOffset? to = null, int? countBack = null, DateTimeOffset? date = null, string? dateKey = null);
+        Task<IndexQuote> V1IndexQuotesAsync(string? stockSymbol, int? limit = null, int? offset = null, bool? headers = null, string? columns = null, bool? symbol_lookup = null, bool? human = null);
     }
 }

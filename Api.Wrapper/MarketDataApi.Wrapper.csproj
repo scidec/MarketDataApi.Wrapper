@@ -9,7 +9,7 @@
 		<PackageIcon>iKP_EZVs_400x400.jpg</PackageIcon>
 		<PackageId>MarketDataApi.Wrapper</PackageId>
 		<Authors>Graham Armstrong</Authors>
-		<VersionPrefix>1.0.0.20</VersionPrefix>
+		<VersionPrefix>1.0.0.21</VersionPrefix>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Copyright>Graham Armstrong</Copyright>
 		<PackageProjectUrl>https://docs.marketdata.app/api</PackageProjectUrl>
