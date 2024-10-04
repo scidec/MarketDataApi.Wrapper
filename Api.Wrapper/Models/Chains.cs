@@ -18,7 +18,8 @@
         public double? Last { get; set; }
         public double? OpenInterest { get; set; }
         public long? Volume { get; set; }
-        public bool? InTheMoney { get; set; }
+		public bool? AtTheMoney { get; set; }
+		public bool? InTheMoney { get; set; }
         public double? IntrinsicValue { get; set; }
         public double? ExtrinsicValue { get; set; }
         public double? UnderlyingPrice { get; set; }

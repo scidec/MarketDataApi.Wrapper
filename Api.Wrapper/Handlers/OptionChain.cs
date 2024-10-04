@@ -136,7 +136,7 @@ namespace MarketDataApi.Wrapper.Handlers
 
             var total = result.Ask.Length;
 
-            for (int i = 0; i < total; i++)
+			for (int i = 0; i < total; i++)
             {
                 items.Add(new Chain
                 { 
@@ -150,7 +150,8 @@ namespace MarketDataApi.Wrapper.Handlers
                     ExtrinsicValue = GetValue.Safe(result.ExtrinsicValue, i),
                     FirstTraded = GetValue.Safe(result.FirstTraded, i),
                     Gamma = GetValue.Safe(result.Gamma, i),
-                    InTheMoney = GetValue.Safe(result.InTheMoney, i),
+					AtTheMoney = false,
+					InTheMoney = GetValue.Safe(result.InTheMoney, i),
                     IntrinsicValue = GetValue.Safe(result.IntrinsicValue, i),
                     IV = GetValue.Safe(result.IV, i),
                     Last = GetValue.Safe(result.Last, i),
@@ -169,7 +170,12 @@ namespace MarketDataApi.Wrapper.Handlers
                 });
             }
 
-            return items;
+			//get the ATM strike
+			var UnderlyingPrice = items.FirstOrDefault().UnderlyingPrice;
+			var ClosestStrike = items.Aggregate((x, y) => Math.Abs(x.Strike.Value - UnderlyingPrice.Value) < Math.Abs(y.Strike.Value - UnderlyingPrice.Value) ? x : y);
+            ClosestStrike.AtTheMoney = true;
+
+			return items;
         }
     }
 }
