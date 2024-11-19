@@ -170,12 +170,15 @@ namespace MarketDataApi.Wrapper.Handlers
                 });
             }
 
-			//get the ATM strike
-			var UnderlyingPrice = items.FirstOrDefault().UnderlyingPrice;
-			var ClosestStrike = items.Aggregate((x, y) => Math.Abs(x.Strike.Value - UnderlyingPrice.Value) < Math.Abs(y.Strike.Value - UnderlyingPrice.Value) ? x : y);
-            ClosestStrike.AtTheMoney = true;
+            //get the closest to ATM strike
+            var up = items.Where(c => c.UnderlyingPrice.HasValue).FirstOrDefault();
+            if (up != null)
+            {
+                var ClosestStrike = items.Aggregate((x, y) => Math.Abs(x.Strike.Value - up.UnderlyingPrice.Value) < Math.Abs(y.Strike.Value - up.UnderlyingPrice.Value) ? x : y);
+                ClosestStrike.AtTheMoney = true;
+            }
 
-			return items;
+            return items;
         }
     }
 }
