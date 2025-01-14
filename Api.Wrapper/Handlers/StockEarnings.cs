@@ -13,7 +13,7 @@ namespace MarketDataApi.Wrapper.Handlers
 		}
 
 		public async Task<List<StockEarning>> V1StockEarningsAsync(Format? format, string? stockSymbol, Dateformat? dateformat = null,
-			DateTimeOffset? from = null, DateTimeOffset? to = null, int? countBack = null, DateTimeOffset? date = null, string? dateKey = null)
+			DateTimeOffset? from = null, DateTimeOffset? to = null, int? countBack = null, DateTimeOffset? date = null, string? report = null)
 		{
 			if (stockSymbol == null)
 				throw new ArgumentNullException(nameof(stockSymbol));
@@ -45,9 +45,9 @@ namespace MarketDataApi.Wrapper.Handlers
 			{
 				urlBuilder_.Append(Uri.EscapeDataString("date") + "=").Append(Uri.EscapeDataString(ConvertToString(date, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
 			}
-			if (dateKey != null)
+			if (report != null)
 			{
-				urlBuilder_.Append(Uri.EscapeDataString("dateKey") + "=").Append(Uri.EscapeDataString(ConvertToString(dateKey, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+				urlBuilder_.Append(Uri.EscapeDataString("report") + "=").Append(Uri.EscapeDataString(ConvertToString(report, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
 			}
 			urlBuilder_.Length--;
 

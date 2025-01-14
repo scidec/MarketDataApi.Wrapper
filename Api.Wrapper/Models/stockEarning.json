@@ -1,15 +1,27 @@
 {
-  "s": "ok",
-  "symbol": [ "AAPL", "AAPL", "AAPL" ],
-  "fiscalYear": [ 2024, 2024, 2024 ],
-  "fiscalQuarter": [ 2, 3, 4 ],
-  "date": [ "2024-03-31", "2024-06-30", "2024-09-30" ],
-  "reportDate": [ "2024-05-02", "2024-08-01", "2024-10-31" ],
-  "reportTime": [ "before open", "before open", "before open" ],
-  "currency": [ "USD", "USD", "USD" ],
-  "reportedEPS": [ null, null, null ],
-  "estimatedEPS": [ 1.58, null, null ],
-  "surpriseEPS": [ null, null, null ],
-  "surpriseEPSpct": [ null, null, null ],
-  "updated": [ "2024-01-31", "2024-01-31", "2024-01-31" ]
+	"s": "ok",
+	"symbol": [
+		"IBKR",
+		"IBKR",
+		"IBKR"
+	],
+	"fiscalYear": [ 2024, 2025, 2025 ],
+	"fiscalQuarter": [ 4, 1, 2 ],
+	"date": [ 1735621200, 1743393600, 1751256000 ],
+	"reportDate": [ 1736830800, 1744603200, 1752465600 ],
+	"reportTime": [
+		"after close",
+		"after close",
+		"before open"
+	],
+	"currency": [
+		"USD",
+		"USD",
+		"USD"
+	],
+	"reportedEPS": [ null, null, null ],
+	"estimatedEPS": [ 1.72, null, null ],
+	"surpriseEPS": [ 0, null, null ],
+	"surpriseEPSpct": [ null, null, null ],
+	"updated": [ 1736744400, 1736744400, 1736744400 ]
 }

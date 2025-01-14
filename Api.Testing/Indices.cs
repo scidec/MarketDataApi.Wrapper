@@ -5,13 +5,13 @@
 	using System.Threading.Tasks;
 
 	[TestClass()]
-	public class Stocks
+	public class Indices
 	{
 		private readonly MarketDataApi.API _api;
 		private readonly MarketDataApi.API _apiProxy;
 		private readonly MarketDataApi.API _apiSource;
 
-		public Stocks()
+		public Indices()
 		{
 			string apiKey = null;
 			try
@@ -33,23 +33,16 @@
 		}
 
 		[TestMethod()]
-		public async Task GetStockQuotes()
+		public async Task GetIndexQuotes()
 		{
-			var result = await _api.V1StockQuotesAsync("AAPL");
+			var result = await _api.V1IndexQuotesAsync("SPX");
 			Assert.IsNotNull(result);
 		}
 
 		[TestMethod()]
-		public async Task GetStockEarnings()
+		public async Task GetIndexCandles()
 		{
-			var result = await _api.V1StockEarningsAsync("AAPL");
-			Assert.IsNotNull(result);
-		}
-
-		[TestMethod()]
-		public async Task GetStockCandles()
-		{
-			var result = await _api.V1StockCandlesAsync("AAPL", "D", new DateTimeOffset(new DateTime(2020, 01, 01)), new DateTimeOffset(new DateTime(2020, 12, 31)));
+			var result = await _api.V1IndexCandlesAsync("VIX", "D", new DateTimeOffset(new DateTime(2024, 01, 09)), new DateTimeOffset(new DateTime(2024, 05, 09)));
 			Assert.IsNotNull(result);
 		}
 	}
